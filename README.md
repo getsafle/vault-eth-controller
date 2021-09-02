@@ -1,5 +1,7 @@
 # Vault Eth Controller
 
+The vault-eth-controller package houses methods to generate a solana wallet and operational methods like signing/broadcast transaction, sign messages, export keys, etc. This sdk maintains a keyring state which houses multiple accounts derived from the same mnemonic.
+
 ## Install
 
 `npm install --save @getsafle/vault-eth-controller`
