@@ -2,6 +2,10 @@
 const { EventEmitter } = require('events')
 const log = require('loglevel')
 const ethUtil = require('ethereumjs-util')
+const { FeeMarketEIP1559Transaction } = require('@ethereumjs/tx');
+const Common = require('@ethereumjs/common').default;
+const { Hardfork } = require('@ethereumjs/common');
+const { bufferToHex }=require('ethereumjs-util')
 
 const bip39 = require('bip39')
 const ObservableStore = require('obs-store')
@@ -382,6 +386,26 @@ class KeyringController extends EventEmitter {
         }, [])
       })
     return addrs.map(normalizeAddress)
+  }
+
+  async signTransaction(rawTx, web3) {
+    let chain;
+
+    await web3.eth.getChainId().then((e) => chain = e);
+
+    const privateKey = await this.exportAccount(rawTx.from);
+
+    const pkey = Buffer.from(privateKey, 'hex');
+
+    const common = new Common({ chain, hardfork: Hardfork.London });
+
+    const tx = FeeMarketEIP1559Transaction.fromTxData(rawTx, { common });
+
+    const signedTransaction = tx.sign(pkey);
+
+    const signedTx = bufferToHex(signedTransaction.serialize());
+
+    return signedTx
   }
 
   /**
