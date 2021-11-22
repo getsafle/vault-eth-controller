@@ -9,3 +9,9 @@
 * Added method to sign a transaction
 * Added method to sign a message
 * Added method to sign Typed Data (EIP-712)
+
+### 1.0.1 (2021-11-19)
+
+##### EIP-1559 transaction signing
+
+* Added support for EIP-1559 transaction signing
