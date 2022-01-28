@@ -1,6 +1,6 @@
 {
   "name": "@getsafle/vault-eth-controller",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Ethereum controller for safle vault.",
   "main": "src/index.js",
   "scripts": {
@@ -12,12 +12,12 @@
   },
   "author": "safle",
   "license": "MIT",
-  "contributors": [ 
+  "contributors": [
     {
       "name": "Arjun",
       "email": "arjun@getsafle.com"
     }
-],
+  ],
   "keywords": [
     "ethereum",
     "vault",
@@ -27,6 +27,7 @@
   "homepage": "https://github.com/getsafle/vault-eth-controller#readme",
   "dependencies": {
     "@ethereumjs/common": "^2.6.0",
+    "@ethereumjs/tx": "^3.4.0",
     "bip39": "^3.0.4",
     "browser-passworder": "^2.0.3",
     "eth-hd-keyring": "^3.6.0",
