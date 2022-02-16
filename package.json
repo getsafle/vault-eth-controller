@@ -27,6 +27,7 @@
   "homepage": "https://github.com/getsafle/vault-eth-controller#readme",
   "dependencies": {
     "@ethereumjs/common": "^2.6.0",
+    "@ethereumjs/tx": "^3.4.0",
     "bip39": "^3.0.4",
     "browser-passworder": "^2.0.3",
     "eth-hd-keyring": "^3.6.0",
