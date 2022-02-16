@@ -1,6 +1,6 @@
 {
   "name": "@getsafle/vault-eth-controller",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Ethereum controller for safle vault.",
   "main": "src/index.js",
   "scripts": {
