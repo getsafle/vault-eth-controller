@@ -64,5 +64,11 @@ const signedMsg = await ethController.signMessage(msgParams);
 ### Sign Typed Data (EIP-712)
 
 ```
-const signedData = await ethController.signTypedMessage (msgParams);
+const signedData = await ethController.signTypedMessage(msgParams);
+```
+
+### Get balance
+
+```
+const balance = await getBalance(address, web3);
 ```

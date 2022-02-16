@@ -21,3 +21,9 @@
 ##### Implement import wallet functionality
 
 - Added importWallet() to import account using privateKey.
+
+### 1.0.3 (2022-02-16)
+
+##### Implement get balance functionality
+
+- Added getBalance() to fetch the balance in native currency.
