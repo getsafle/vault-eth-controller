@@ -7,9 +7,9 @@
 ## Initialize the Eth Controller class
 
 ```
-const controller = require('@getsafle/vault-eth-controller');
+const { KeyringController, getBalance } = require('@getsafle/vault-eth-controller');
 
-const ethController = new controller({
+const ethController = new KeyringController({
   encryptor: {
     // An optional object for defining encryption schemes:
     // Defaults to Browser-native SubtleCrypto.
@@ -64,5 +64,11 @@ const signedMsg = await ethController.signMessage(msgParams);
 ### Sign Typed Data (EIP-712)
 
 ```
-const signedData = await ethController.signTypedMessage (msgParams);
+const signedData = await ethController.signTypedMessage(msgParams);
+```
+
+### Get balance
+
+```
+const balance = await getBalance(address, web3);
 ```
