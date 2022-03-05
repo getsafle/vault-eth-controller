@@ -61,6 +61,12 @@ const signedTx = await ethController.signTransaction(ethTx, _fromAddress);
 const signedMsg = await ethController.signMessage(msgParams);
 ```
 
+### Sign a message
+
+```
+const signedObj = await ethController.sign(msgParams, pvtKey, web3Obj);
+```
+
 ### Sign Typed Data (EIP-712)
 
 ```
