@@ -82,5 +82,5 @@ const balance = await getBalance(address, web3);
 ### Send Transaction
 
 ```
-const receipt = await ethController.signTypedMessage(signedTx, web3);
+const receipt = await ethController.sendTransaction(signedTx, web3);
 ```
