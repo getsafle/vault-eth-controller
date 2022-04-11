@@ -33,3 +33,9 @@
 ##### Implement sign functionality
 
 - Added sign() to sign a message or transaction and get signature along with v,r,s.
+
+### 1.3.0 (2022-04-12)
+
+##### Implement transaction broadcast functionality
+
+- Added `sendTransaction()` function to send a signed transaction to the blockchain.

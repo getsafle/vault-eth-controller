@@ -78,3 +78,9 @@ const signedData = await ethController.signTypedMessage(msgParams);
 ```
 const balance = await getBalance(address, web3);
 ```
+
+### Send Transaction
+
+```
+const receipt = await ethController.signTypedMessage(signedTx, web3);
+```
