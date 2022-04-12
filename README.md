@@ -84,3 +84,9 @@ const balance = await getBalance(address, web3);
 ```
 const receipt = await ethController.sendTransaction(signedTx, web3);
 ```
+
+### Calculate Tx Fees
+
+```
+const fees = await ethController.getFees(rawTx, web3);
+```
