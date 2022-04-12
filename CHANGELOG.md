@@ -39,3 +39,9 @@
 ##### Implement transaction broadcast functionality
 
 - Added `sendTransaction()` function to send a signed transaction to the blockchain.
+
+### 1.4.0 (2022-04-12)
+
+##### Function to get the transaction fees
+
+- Added `getFees()` function to get the transaction fees for a raw transaction object.
