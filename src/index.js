@@ -527,6 +527,11 @@ class KeyringController extends EventEmitter {
     this.memStore.updateState({ isUnlocked: true })
     this.emit('unlock')
   }
+
+  async sendTransaction(signedTx, web3) {
+    const receipt = await web3.eth.sendSignedTransaction(signedTx);
+    return { transactionDetails: receipt.transactionHash }
+  }
 }
 
 const getBalance = async (address, web3) => {
