@@ -45,3 +45,9 @@
 ##### Function to get the transaction fees
 
 - Added `getFees()` function to get the transaction fees for a raw transaction object.
+
+### 1.4.1 (2023-03-15)
+
+##### Upated @ethereumjs/common implementation 
+
+- Upated `@ethereumjs/common` implementation for `signTransaction` method
