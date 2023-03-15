@@ -412,7 +412,7 @@ class KeyringController extends EventEmitter {
 
     const pkey = Buffer.from(privateKey, 'hex');
 
-    const common = new Common({ chain, hardfork: Hardfork.London });
+    const common = Common.custom({ chainId: chain }, { hardfork: Hardfork.London })
 
     const tx = FeeMarketEIP1559Transaction.fromTxData(rawTx, { common });
 
