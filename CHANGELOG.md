@@ -51,3 +51,7 @@
 ##### Upated @ethereumjs/common implementation 
 
 - Upated `@ethereumjs/common` implementation for `signTransaction` method
+
+### 1.4.2 (2023-05-17)
+
+- Update importWallet method
