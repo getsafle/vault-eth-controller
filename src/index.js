@@ -233,7 +233,12 @@ class KeyringController extends EventEmitter {
 
   importWallet(_privateKey) {
     try {
+
+      if (_privateKey.startsWith('0x')) {
+        _privateKey = _privateKey.slice(2)
+      }
       const privateKey = Buffer.from(_privateKey, 'hex')
+      
       if (!ethUtil.isValidPrivate(privateKey))
         throw "Enter a valid private key"
 
