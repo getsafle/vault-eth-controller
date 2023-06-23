@@ -408,13 +408,15 @@ class KeyringController extends EventEmitter {
     return addrs.map(normalizeAddress)
   }
 
-  async signTransaction(rawTx, web3) {
+  async signTransaction(rawTx, web3, privateKey = null) {
     let chain;
 
     await web3.eth.getChainId().then((e) => chain = e);
 
-    const privateKey = await this.exportAccount(rawTx.from);
-
+    if(!privateKey) {
+      privateKey = await this.exportAccount(rawTx.from);
+    }
+    
     const pkey = Buffer.from(privateKey, 'hex');
 
     const common = Common.custom({ chainId: chain }, { hardfork: Hardfork.London })

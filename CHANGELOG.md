@@ -59,3 +59,7 @@
 ### 1.4.3 (2023-06-21)
 
 - update import wallet to accept private key with or without '0x’ prefixed
+
+### 1.4.4 (2023-06-23)
+
+- update sign transaction to accept private key in case of imported wallet, null by default
