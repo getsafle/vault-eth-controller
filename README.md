@@ -1,6 +1,6 @@
 # Vault-eth-Controller<code><a href="https://www.docker.com/" target="_blank"><img height="50" src="https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880"></a></code>
 
-<img alt="Static Badge" src="https://img.shields.io/badge/version-v1.4.5-blue">  <img alt="Static Badge" src="https://img.shields.io/badge/nvm-v6.0.6-red">  <img alt="Static Badge" src="https://img.shields.io/badge/License-MIT-green">   [![Discussions][discussions-badge]][discussions-link]
+[![npm version](https://badge.fury.io/js/@getsafle%2Fvault-eth-controller.svg)](https://badge.fury.io/js/@getsafle%2Fvault-eth-controller)  <img alt="Static Badge" src="https://img.shields.io/badge/License-MIT-green">   [![Discussions][discussions-badge]][discussions-link]
  <img alt="Static Badge" src="https://img.shields.io/badge/Eth_controller-documentation-purple">   
 
 A Module written in javascript for managing various keyrings of Ethereum accounts, encrypting them, and using them.
