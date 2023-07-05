@@ -1,24 +1,6 @@
-# Vault-eth-Controller<code><a href="https://www.docker.com/" target="_blank"><img height="50" src="https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880"></a></code>
+# Vault Eth Controller
 
-<img alt="Static Badge" src="https://img.shields.io/badge/version-v1.4.0-blue">  <img alt="Static Badge" src="https://img.shields.io/badge/nvm-v6.0.6-red">  <img alt="Static Badge" src="https://img.shields.io/badge/License-MIT-green">   [![Discussions][discussions-badge]][discussions-link]
- <img alt="Static Badge" src="https://img.shields.io/badge/Eth_controller-documentation-purple">   
-
-A Module written in javascript for managing various keyrings of Ethereum accounts, encrypting them, and using them.
-
-- [Installation](#installation)
-- [Initialize the Eth Controller class](#initialize-the-eth-controller-class)
-- [Methods](#methods)
-  - [Generate Keyring with 1 account and encrypt](#generate-keyring-with-1-account-and-encrypt)
-  - [Restore a keyring with the first account using a mnemonic](#restore-a-keyring-with-the-first-account-using-a-mnemonic)
-  - [Add a new account to the keyring object](#add-a-new-account-to-the-keyring-object)
-  - [Export the private key of an address present in the keyring](#export-the-private-key-of-an-address-present-in-the-keyring)
-  - [Sign a transaction](#sign-a-transaction)
-  - [Sign a message](#sign-a-message)
-  - [Get balance](#get-balance)
-
-
-
-## Installation
+## Install
 
 `npm install --save @getsafle/vault-eth-controller`
 
@@ -108,5 +90,3 @@ const receipt = await ethController.sendTransaction(signedTx, web3);
 ```
 const fees = await ethController.getFees(rawTx, web3);
 ```
-[discussions-badge]: https://img.shields.io/badge/Code_Quality-passing-rgba
-[discussions-link]: https://github.com/getsafle/vault-eth-controller/actions
