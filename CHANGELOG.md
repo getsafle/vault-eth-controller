@@ -63,3 +63,8 @@
 ### 1.4.4 (2023-06-23)
 
 - update sign transaction to accept private key in case of imported wallet, null by default
+
+
+### 1.4.5 (2023-07-05)
+
+- Adding badges for Readme.md
