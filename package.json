@@ -33,7 +33,8 @@
   "homepage": "https://github.com/getsafle/vault-eth-controller#readme",
   "devDependencies": {
     "eslint-plugin-mocha": "^8.0.0",
-    "mocha": "^8.1.3"
+    "mocha": "^8.1.3",
+    "nyc": "^15.0.0"
   },
   "dependencies": {
     "@ethereumjs/common": "2.6.0",
