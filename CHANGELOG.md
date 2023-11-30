@@ -74,3 +74,4 @@
 
 - Added test suite
 - Upgraded node version to 18.x
+- Added gas limit and gas estimation in getFees()

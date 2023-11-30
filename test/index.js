@@ -14,6 +14,7 @@ const {
     EXTERNAL_ACCOUNT_WRONG_PRIVATE_KEY_1,
     EXTERNAL_ACCOUNT_WRONG_PRIVATE_KEY_2,
     EXTERNAL_ACCOUNT_WRONG_PRIVATE_KEY_3,
+    EXTERNAL_ACCOUNT_ADDRESS_TO_GET_FEE,
     ETH_NETWORK: {
         TESTNET,
         MAINNET
@@ -90,15 +91,21 @@ describe('Initialize wallet ', () => {
     })
 
 
-    it("Get fees with manual gasLimit", async () => {
+    it("Get fees", async () => {
         const web3 = new Web3(TESTNET.URL);
-        const tx = {
-            gasLimit: 2100,
-            maxFeePerGas: 2500000002,
-            maxPriorityFeePerGas: 2500000000
-        }
-        const fees = await ethKeyring.getFees(tx, web3)
-        console.log(" with manual gasLimit ", fees)
+        const rawTx = {
+            to: '0xca878f65d50caf80a84fb24e40f56ef05483e1cb',
+            from: EXTERNAL_ACCOUNT_ADDRESS_TO_GET_FEE,
+            value: web3.utils.numberToHex(web3.utils.toWei('0.01', 'ether')),
+            data: '0x00',
+            chainId: 5,
+        };
+
+        const response = await ethKeyring.getFees(rawTx, web3)
+        let fees = Object.keys(response.fees)
+        let expectedFees = ["slow", "standard", "fast", "baseFee"]
+
+        assert.deepEqual(fees, expectedFees, "Should have slow, standard, fast and base fee")
 
     })
 
@@ -140,7 +147,7 @@ describe('Initialize wallet ', () => {
 
         const privateKey = await ethKeyring.exportAccount(accounts[0])
         const signedTX = await ethKeyring.signTransaction(rawTx, web3, privateKey)
-        console.log("signedTX ", signedTX)
+        assert(signedTX)
 
     })
 
