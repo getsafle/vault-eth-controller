@@ -5,7 +5,12 @@
   "main": "src/index.js",
   "scripts": {
     "test-audit": "npm audit",
-    "test": "mocha --timeout 15000"
+    "test": "mocha \"test/**.js\" --timeout 15000",
+    "test:coverage": "npm run cover:unit && npm run cover:report",
+    "test:coveragehtml": "npm run cover:unit && npm run cover:reporthtml",
+    "cover:unit": "nyc --silent npm run test",
+    "cover:report": "nyc report --reporter=lcov --reporter=text --report-dir='./jscoverage'",
+    "cover:reporthtml": "nyc report --reporter=html --report-dir='./jscoverage'"
   },
   "repository": {
     "type": "git",
@@ -28,7 +33,8 @@
   "homepage": "https://github.com/getsafle/vault-eth-controller#readme",
   "devDependencies": {
     "eslint-plugin-mocha": "^8.0.0",
-    "mocha": "^8.1.3"
+    "mocha": "^8.1.3",
+    "nyc": "^15.0.0"
   },
   "dependencies": {
     "@ethereumjs/common": "2.6.0",
