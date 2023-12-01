@@ -565,21 +565,21 @@ class KeyringController extends EventEmitter {
 
     let fees = {
       "slow" : {
-        "maxPriorityFeePerGas" : parseInt(web3.utils.toWei(response.data.low.suggestedMaxPriorityFeePerGas, 'gwei')),
-        "maxFeePerGas" : parseInt(web3.utils.toWei(response.data.low.suggestedMaxFeePerGas, 'gwei')),
+        "maxPriorityFeePerGas" : parseInt(parseFloat(response.data.low.suggestedMaxPriorityFeePerGas) * Math.pow(10, 9)),
+        "maxFeePerGas" : parseInt(parseFloat(response.data.low.suggestedMaxFeePerGas) * Math.pow(10, 9)),
 
       },
       "standard" : {
-        "maxPriorityFeePerGas" : parseInt(web3.utils.toWei(response.data.medium.suggestedMaxPriorityFeePerGas, 'gwei')),
-        "maxFeePerGas" : parseInt(web3.utils.toWei(response.data.medium.suggestedMaxFeePerGas, 'gwei')),
+        "maxPriorityFeePerGas" : parseInt(parseFloat(response.data.medium.suggestedMaxPriorityFeePerGas) * Math.pow(10, 9)),
+        "maxFeePerGas" : parseInt(parseFloat(response.data.medium.suggestedMaxFeePerGas) * Math.pow(10, 9)),
 
       },
       "fast" : {
-        "maxPriorityFeePerGas" : parseInt(web3.utils.toWei(response.data.high.suggestedMaxPriorityFeePerGas), 'gwei'),
-        "maxFeePerGas" : parseInt(web3.utils.toWei(response.data.high.suggestedMaxFeePerGas, 'gwei')),
+        "maxPriorityFeePerGas" : parseInt(parseFloat(response.data.high.suggestedMaxPriorityFeePerGas) * Math.pow(10, 9)),
+        "maxFeePerGas" : parseInt(parseFloat(response.data.high.suggestedMaxFeePerGas) * Math.pow(10, 9)),
 
       },
-      "baseFee" : parseInt(web3.utils.toWei(response.data.estimatedBaseFee, 'gwei')),
+      "baseFee" : parseInt(parseFloat(response.data.estimatedBaseFee) * Math.pow(10, 9)),
     };
 
     return { 
