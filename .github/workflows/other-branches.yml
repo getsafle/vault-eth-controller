@@ -1,0 +1,40 @@
+# # This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+
+name: Feature/Bugfix/dev/test branch
+
+on:
+  push:
+    branches:
+      - feature-*
+      - bugfix-*
+      - dev
+      - test
+  pull_request:
+    branches:
+      - feature-*
+      - bugfix-*
+      - dev
+      - test
+    paths:
+      - package.json
+      - CHANGELOG 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Code checkout
+      uses: actions/checkout@v2
+
+    - name: Setting up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18.x'
+
+    - name: Installing dependencies 
+      run: npm ci
+      
+    - name: Run tests
+      run: | 
+        npm run test:coverage
