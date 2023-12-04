@@ -68,3 +68,10 @@
 ### 1.4.5 (2023-07-05)
 
 - Adding badges for Readme.md
+
+
+### 1.4.6 (2023-11-28)
+
+- Added test suite
+- Upgraded node version to 18.x
+- Added gas limit and gas estimation in getFees()

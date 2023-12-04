@@ -1,10 +1,16 @@
 {
   "name": "@getsafle/vault-eth-controller",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "description": "Ethereum controller for safle vault.",
   "main": "src/index.js",
   "scripts": {
-    "test-audit": "npm audit"
+    "test-audit": "npm audit",
+    "test": "mocha \"test/**.js\" --timeout 15000",
+    "test:coverage": "npm run cover:unit && npm run cover:report",
+    "test:coveragehtml": "npm run cover:unit && npm run cover:reporthtml",
+    "cover:unit": "nyc --silent npm run test",
+    "cover:report": "nyc report --reporter=lcov --reporter=text --report-dir='./jscoverage'",
+    "cover:reporthtml": "nyc report --reporter=html --report-dir='./jscoverage'"
   },
   "repository": {
     "type": "git",
@@ -25,16 +31,24 @@
     "eth"
   ],
   "homepage": "https://github.com/getsafle/vault-eth-controller#readme",
+  "devDependencies": {
+    "eslint-plugin-mocha": "^8.0.0",
+    "mocha": "^8.1.3",
+    "nyc": "^15.0.0"
+  },
   "dependencies": {
     "@ethereumjs/common": "2.6.0",
     "@ethereumjs/tx": "^3.4.0",
+    "axios": "^1.6.2",
     "bip39": "^3.0.4",
     "browser-passworder": "^2.0.3",
+    "crypto-js": "^4.2.0",
     "eth-hd-keyring": "^3.6.0",
     "eth-sig-util": "^3.0.1",
     "eth-simple-keyring": "^4.2.0",
     "ethereumjs-util": "^7.1.0",
     "loglevel": "^1.7.1",
-    "obs-store": "^4.0.3"
+    "obs-store": "^4.0.3",
+    "web3": "^1.6.0"
   }
 }
