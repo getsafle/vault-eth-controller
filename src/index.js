@@ -14,6 +14,8 @@ const { normalize: normalizeAddress } = require('eth-sig-util')
 
 const SimpleKeyring = require('eth-simple-keyring')
 const HdKeyring = require('eth-hd-keyring')
+const axios = require("axios");
+const { GAS_FEE_API_ETH } = require('./constants/index')
 
 const keyringTypes = [
   SimpleKeyring,
@@ -540,17 +542,50 @@ class KeyringController extends EventEmitter {
     return { transactionDetails: receipt.transactionHash }
   }
 
+  /**
+   * get Fees method to get the fees for reqiured chainId for avalanche
+   *
+   * returns the object having gasLimit and fees for the block
+   *
+   * @param {Object} rawTx - Rawtransaction - {from,to,value,data, chainId}  
+   * @param {Object} web3 - web3 object.
+   * @returns {Object} - gasLimit for the transaction and fees for the transaction
+   */
   async getFees(rawTx, web3) {
-    const { from, to, value, data, gasLimit, maxFeePerGas } = rawTx
-    const estimate = gasLimit ? gasLimit : await web3.eth.estimateGas({ to, from, value, data });
+    const { from, to, value, data, chainId } = rawTx
+    const gasLimit = await web3.eth.estimateGas({ to, from, value, data });
 
-    const re = /[0-9A-Fa-f]{6}/g;
+    let URL = GAS_FEE_API_ETH.replace("#{chainid}", chainId).toString();
 
-    const maxFee = (re.test(maxFeePerGas)) ? parseInt(maxFeePerGas, 16) : maxFeePerGas;
+    const response = await axios({
+      url : `${URL}`,
+      method: 'GET',
+    });
 
-    const gas = (re.test(estimate)) ? parseInt(estimate, 16) : estimate
-    
-    return { transactionFees: web3.utils.fromWei((gas * maxFee).toString(), 'ether') }
+
+    let fees = {
+      "slow" : {
+        "maxPriorityFeePerGas" : parseInt(parseFloat(response.data.low.suggestedMaxPriorityFeePerGas) * Math.pow(10, 9)),
+        "maxFeePerGas" : parseInt(parseFloat(response.data.low.suggestedMaxFeePerGas) * Math.pow(10, 9)),
+
+      },
+      "standard" : {
+        "maxPriorityFeePerGas" : parseInt(parseFloat(response.data.medium.suggestedMaxPriorityFeePerGas) * Math.pow(10, 9)),
+        "maxFeePerGas" : parseInt(parseFloat(response.data.medium.suggestedMaxFeePerGas) * Math.pow(10, 9)),
+
+      },
+      "fast" : {
+        "maxPriorityFeePerGas" : parseInt(parseFloat(response.data.high.suggestedMaxPriorityFeePerGas) * Math.pow(10, 9)),
+        "maxFeePerGas" : parseInt(parseFloat(response.data.high.suggestedMaxFeePerGas) * Math.pow(10, 9)),
+
+      },
+      "baseFee" : parseInt(parseFloat(response.data.estimatedBaseFee) * Math.pow(10, 9)),
+    };
+
+    return { 
+      gasLimit: gasLimit,
+      fees: fees
+    }
   }
 }
 
